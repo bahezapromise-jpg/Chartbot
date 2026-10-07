@@ -1,0 +1,22 @@
+# Week 1: Pizza Order Bot
+
+## Overview
+This repository contains the Week 1 activity for the Chatbots Development course. The project implements a simple state-based rule-based chatbot in Python that guides a user through ordering a custom pizza.
+
+## Features
+- Interactive 3-step conversational flow (Size selection, Topping selection, Order confirmation).
+ - Immediate termination logic if the user types "bye" at any stage.
+ - Written in Python for Google Colab environment.
+
+## File Structure
+ - `Lastname_Firstname_Week1_Activity.ipynb` - Notebook containing the complete Pizza Order Bot code.
+- `README.md`
+ - Documentation and setup details.
+
+## How to Run
+1. Open the `.ipynb` file in Google Colab or Jupyter Notebook.
+2. Execute all code cells sequentially.
+3. Interact with the bot using the input prompts.
+
+Author 
+ISEZERANO Theophile

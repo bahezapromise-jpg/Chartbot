@@ -40,10 +40,6 @@ Failures and their causes:
 - `rnw my bk` (expected renew, got fallback): keyword too short. The reader used abbreviations that no sensible keyword matches.
 - `can i extend my deadline` (expected fallback, got renew): a word genuinely shared between two intents. "extend" is a renew keyword but here refers to a deadline. No pattern can fix this; it needs intent classification (Week 9).
 
-## Running this notebook
-
-- Open Isezerano_Theophile_Assignment_4.ipynb in Google Colab.
-- Run the cells in order. **Do not use Run all** — the chat cell waits for input.
 
 ## What was learned
 

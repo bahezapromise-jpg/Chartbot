@@ -1,6 +1,6 @@
 # Week 4 — Rule-Based Chatbot for the Campus Library
 
-Name: Isezerano Theophile · GitHub: GitHub: bahezapromise-jpg
+Name: Isezerano Theophile · GitHub: bahezapromise-jpg
 
 ## Overview
 
@@ -21,9 +21,9 @@ This is a rule-based chatbot for the campus library. It uses one regular express
 
 Order used: rooms, hours, renew, borrow, fines, printing. The first pattern that matches answers, so order decides collisions.
 
-**rooms** and **borrow** collided. "i want to book a study room" contains the whole word "book", which borrow also uses ("how long can i keep a book"). rooms is checked first because it is more specific. If the order were reversed, a room request would be answered with the borrowing limit and the booking flow would never start.
+rooms and borrow collided. "i want to book a study room" contains the whole word "book", which borrow also uses ("how long can i keep a book"). rooms is checked first because it is more specific. If the order were reversed, a room request would be answered with the borrowing limit and the booking flow would never start.
 
-A second collision is **renew** and **borrow**: "i want to extend my book" also contains "book", so renew is placed before borrow too. borrow has the broadest keyword, so it is checked after the more specific intents.
+A second collision is renew and borrow: "i want to extend my book" also contains "book", so renew is placed before borrow too.
 
 ## The booking flow
 
@@ -34,14 +34,17 @@ Three values are collected one at a time: the day (mon–sat), then the time (mo
 - Test messages: 35
 - Returned the expected tag: 32
 
-Failures and their causes:
+Failures:
 
-- `how many books can i take and what are the fines` (expected borrow+fines, got borrow): a genuine overlap, because the message holds two requests and the first match wins. This is routing, not matching.
-- `rnw my bk` (expected renew, got fallback): keyword too short. The reader used abbreviations that no sensible keyword matches.
-- `can i extend my deadline` (expected fallback, got renew): a word genuinely shared between two intents. "extend" is a renew keyword but here refers to a deadline. No pattern can fix this; it needs intent classification (Week 9).
+- `how many books can i take and what are the fines` (expected borrow+fines, got borrow): two requests in one message, and the first match wins.
+- `rnw my bk` (expected renew, got fallback): keyword too short; abbreviations that no keyword matches.
+- `can i extend my deadline` (expected fallback, got renew): "extend" is shared between renewing a loan and extending a deadline. No pattern can fix this; it needs intent classification (Week 9).
 
+## Running this notebook
+
+- Open Isezerano_Theophile_Assignment_4.ipynb in Google Colab.
+- Run the cells in order. **Do not use Run all** — the chat cell waits for input.
 
 ## What was learned
 
-Regular expressions with `\b` let one pattern replace a whole keyword list and stop matches inside longer words such as "bookshop". The order of the rules matters as much as the patterns themselves, because the first match wins. Some failures, such as shared words and two requests in one message, cannot be fixed by patterns and need routing or classification later in the module.
-
+(Write 2–3 sentences yourself: which part was hardest, what went wrong the first time, and what you now understand about rule order or patterns.)

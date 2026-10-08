@@ -1,6 +1,6 @@
 # Week 4 — Rule-Based Chatbot for the Campus Library
 
-Name: Isezerano Theophile · GitHub: your-github-username
+Name: Isezerano Theophile · GitHub: GitHub: bahezapromise-jpg
 
 ## Overview
 

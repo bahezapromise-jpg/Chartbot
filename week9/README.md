@@ -1,14 +1,8 @@
-
-- **A4:** `char_wb` pads each word with a space on both sides (" menu "), then takes every 2-letter piece: ` m`, `me`, `en`, `nu`, `u `.
-
----
-
-## Part B: Measure by hand
 # Week 9 Activity: Predict, Measure and Choose
 
 **Course:** Chatbots Development (AITCD001), Learning Outcome 3
 **Name:** Isezerano Theophile
-**Date:** ____________
+**Date:** 29 October 2026
 
 ---
 
@@ -28,6 +22,12 @@
 - **A3:** idf = ln((1 + n) / (1 + df)) + 1, with n = 2 messages.
   - pizza is in 2 of 2 messages: ln(3/3) + 1 = **1.0**
   - large and please are each in 1 of 2 messages: ln(3/2) + 1 = 1.405, which rounds to **1.41**
+- **A4:** `char_wb` pads each word with a space on both sides (" menu "), then takes every 2-letter piece: ` m`, `me`, `en`, `nu`, `u `.
+
+---
+
+## Part B: Measure by hand
+
 Confusion matrix (rows = real label, columns = guess):
 
 | real label | guessed hours | guessed price | guessed menu | total |
@@ -90,22 +90,21 @@ The clinic should use a **higher threshold**. A wrong answer can send a patient 
 
 ## Part D: The classifier on my own dataset
 
-**My chatbot's domain:** ______________________________  
-☐ pizza dataset used instead (repeat Part D at home once `intents.csv` exists)
+**My chatbot's domain:** Kigali Pizza chatbot (pizza dataset)  
+☑ pizza dataset used instead (to be repeated at home once my `intents.csv` from Assignment 8 is ready)
 
 | # | What to record | Result |
 |---|----------------|--------|
-| 1 | Rows, training and test; number of labels | ___ training, ___ test, ___ labels |
-| 2 | Accuracy with words, and with characters | words ___%, characters ___% |
-| 3 | Fallback rate at 0.2 | ___% |
-| 4 | Weakest intent (lowest F1), and one reason | intent: ______ (F1 ___); reason: ______ |
-| 5 | Baseline of the rule table of the same chatbot (Assignment 8, Step 6) | ___ |
+| 1 | Rows, training and test; number of labels | 360 training, 90 test, 9 labels |
+| 2 | Accuracy with words, and with characters | words 70% (63 of 90), characters 80% (72 of 90) |
+| 3 | Fallback rate at 0.2 | 26% (23 of 90 test messages) |
+| 4 | Weakest intent (lowest F1), and one reason | `out_of_scope` (F1 0.62, recall 0.50). Reason: many out-of-scope messages reuse words from real intents (for example "my pizza is missing a topping" or "do you accept cards"), so the classifier gives them a real intent instead of the fallback. The weakest real intent is `menu` (F1 0.64). |
+| 5 | Baseline of the rule table of the same chatbot (Assignment 8, Step 6) | The Week 6 rules: 56 of 90 right = 62% (29 missed, 5 confident and wrong) |
 
 **Does the classifier beat the rules on this dataset?**
 
-Classifier accuracy (characters): ___%. Rule table baseline: ___%.
-Answer: ______________________________
+Yes. The character n-gram classifier gets **80%** (72 of 90 right) and the rule table gets **62%** (56 of 90 right).
 
 **One change to the dataset that would help the weakest intent:**
 
-______________________________
+Add more varied `out_of_scope` training messages that contain pizza-related words, such as complaints ("my pizza was late"), payment questions and staff questions. The classifier then learns that these words alone do not mean hours, menu or price.
